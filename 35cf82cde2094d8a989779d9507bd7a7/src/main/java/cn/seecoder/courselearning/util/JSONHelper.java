@@ -18,7 +18,7 @@ public class JSONHelper {
         try {
             map = new ObjectMapper().readValue(jsonStr, new TypeReference<HashMap<String, Object>>() {});
             if (map.get(property) != null) {
-                return map.get(property);
+                return map.get(property);      //njq理解：返回的是object后强转成int可看作是property。object太大了但是不会改
             }
         } catch (Exception e) {
             return null;

@@ -23,6 +23,8 @@ public enum CouponType {
         this.couponStrategy = couponStrategy;
     }
 
+    public boolean beUsed(){ return false; }
+
     @Override
     public String toString() {
         return value;

@@ -1,6 +1,6 @@
 server:
-  port: 8081
-
+  port: 8080
+#原8081
 
 spring:
   datasource:

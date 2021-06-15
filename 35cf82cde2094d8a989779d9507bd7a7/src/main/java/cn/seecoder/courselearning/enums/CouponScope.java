@@ -14,8 +14,11 @@ public enum CouponScope {
 
 
     SINGLE("单个课程", (course,coupon) -> course.getId().equals((Integer)JSONHelper.getByProperty(coupon.getMetadata(), "courseId"))),
-    TEACHER("某个老师的课程", (course, coupon) -> course.getId().equals((Integer)JSONHelper.getByProperty(coupon.getMetadata(), "teacherId"))),
-    SCHOOL("某个学校的课程", (course, coupon) -> course.getId().equals((Integer)JSONHelper.getByProperty(coupon.getMetadata(), "schoolId"))),
+    //TEACHER("某个老师的课程", (course, coupon) -> course.getId().equals((Integer)JSONHelper.getByProperty(coupon.getMetadata(), "teacherId"))),
+    TEACHER("某个老师的课程", (course, coupon) -> course.getTeacherId().equals((Integer)JSONHelper.getByProperty(coupon.getMetadata(), "teacherId"))),
+    //SCHOOL("某个学校的课程", (course, coupon) -> course.getId().equals((Integer)JSONHelper.getByProperty(coupon.getMetadata(), "schoolId"))),
+    SCHOOL("某个学校的课程", (course, coupon) -> course.getSchoolID().equals((Integer)JSONHelper.getByProperty(coupon.getMetadata(), "schoolId"))),
+    //全都是course.getId()怎么能和强转成int的map相等呢，应该有问题
     COMMON("通用，全站课程皆可使用", (course, coupon) -> true);
 
     private final String value;
@@ -40,3 +43,4 @@ public enum CouponScope {
         return this.couponScopeStrategy.apply(course, coupon);
     }
 }
+

@@ -9,6 +9,7 @@ import cn.seecoder.courselearning.service.coupon.coupondeliverstrategy.CouponDel
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -39,12 +40,16 @@ public class CourseLikeDeliverStrategy implements CouponDeliverStrategy {
         int result = courseLikesMapper.count(user.getId(), courseId);
         if (result == 1) {
             // 判断优惠券的适用范围
-            Course course = courseMapper.selectByPrimaryKey(courseId);
+            Course course = courseMapper.selectByPrimaryKey(courseId);  //如果只有这一行的话是只发放courseid优惠券
+            List<Course> courseSelectBySchool=courseMapper.selectBySchool(course.getSchool());
             // 判断能否适用
-            if (coupon.getScope().canUse(course, coupon)) {
-                return true;
-            } else {
-                return false;
+            for(int i=0;i<courseSelectBySchool.size();i++){
+                Course course1=courseSelectBySchool.get(i);
+                if (coupon.getScope().canUse(course1, coupon)) {
+                    return true;
+                } else {
+                    return false;
+                }
             }
         }
         return false;

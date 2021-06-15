@@ -18,7 +18,7 @@ public interface CouponStrategy {
      * 使用优惠券
      * @param orderVO
      * @param coupon
-     * @return 返回优惠价格
+     * @return
      */
     int useCoupon(CourseOrderVO orderVO, Coupon coupon);
 }

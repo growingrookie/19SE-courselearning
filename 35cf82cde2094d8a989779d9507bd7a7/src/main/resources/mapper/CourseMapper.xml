@@ -65,6 +65,14 @@
     where type = #{type,jdbcType=VARCHAR}
     group by c.id
   </select>
+  <select id="selectBySchool" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select c.id, c.name, c.type, c.intro, c.picture, c.school, c.create_time, c.delete_time, c.cost, c.teacher_id, c.teacher_name, count(t.user_id) as likes
+    from course c
+           left join course_likes as t
+                     on c.id = t.course_id
+    where school = #{school,jdbcType=VARCHAR}
+    group by c.id
+  </select>
   <select id="queryAll" parameterType="java.lang.String" resultMap="BaseResultMap">
     select c.id, name, type, intro, picture, school, create_time, delete_time, cost, teacher_id, teacher_name, count(t.user_id) as likes
     from course c

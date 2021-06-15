@@ -26,4 +26,6 @@ public class DiscountCouponStrategy extends AbstractCouponStrategy {
         int initialCost = orderVO.getCost() == null ? orderVO.getOrigin() : orderVO.getCost();
        return (int)(initialCost * discount);
     }
+    @Override
+    public boolean beUsed(){return true;}
 }

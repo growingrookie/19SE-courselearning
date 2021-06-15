@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.seecoder.courselearning.mapperservice.course.CourseLikesMapper">
+<!--  <resultMap id="BaseResultMap" type="cn.seecoder.courselearning.po.course.Course">-->
+<!--    <result column="course_id" jdbcType="INTEGER" property="id" />-->
+<!--    <result column="user_id" jdbcType="INTEGER" property="userId" />-->
+<!--    <result column="value" jdbcType="INTEGER" property="value" />-->
+<!--    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />-->
+<!--  </resultMap>-->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from course_likes
+    where course_id=#{courseId,jdbcType=INTEGER} and user_id=#{userId,jdbcType=INTEGER};
+  </delete>
+  <insert id="insert" parameterType="java.lang.Integer" useGeneratedKeys="true" keyProperty="id">
+    insert into course_likes (course_id,user_id)
+  values(#{courseId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER})
+  </insert>
+  <select id="count" resultType="java.lang.Integer">
+    select count(*) as num from course_likes
+    where course_id=#{courseId,jdbcType=INTEGER} and user_id=#{userId,jdbcType=INTEGER};
+  </select>
+  <select id="countLikesOfCourse" resultType="java.lang.Integer">
+    select count(*) as count from course_likes
+    where course_id=#{courseId,jdbcType=INTEGER};
+  </select>
+</mapper>

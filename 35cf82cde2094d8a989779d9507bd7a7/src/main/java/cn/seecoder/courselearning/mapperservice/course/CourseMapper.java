@@ -16,6 +16,9 @@ public interface CourseMapper {
 
     List<Course> selectByType(String type);
 
+    //通过selectBySchool找到同学校课程
+    List<Course> selectBySchool(String school);
+
     List<Course> queryAll(String key);
 
     List<Course> selectByTeacherId(Integer userId);

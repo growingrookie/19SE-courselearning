@@ -1,5 +1,6 @@
 package cn.seecoder.courselearning.serviceimpl.coupon.couponstrategy;
 
+import cn.seecoder.courselearning.enums.CouponType;
 import cn.seecoder.courselearning.mapperservice.coupon.UserCouponMapper;
 import cn.seecoder.courselearning.po.coupon.Coupon;
 import cn.seecoder.courselearning.po.course.Course;
@@ -21,6 +22,8 @@ public abstract class AbstractCouponStrategy implements CouponStrategy {
 
     @Autowired
     protected CourseService courseService;
+
+    protected CouponType beUsed;
 
     @Override
     public boolean canUse(CourseOrderVO orderVO, Coupon coupon) {
@@ -45,6 +48,18 @@ public abstract class AbstractCouponStrategy implements CouponStrategy {
         if (!coupon.getScope().canUse(course, coupon)) {
             return false;
         }
+        if(beUsed.beUsed()) {
+            return false;
+        }
         return true;
     }
+
+    public abstract boolean beUsed();
+
+
+//        public void useCoupon(CourseOrderVO orderVO, Coupon coupon) {
+//            UserCoupon userCoupon = userCouponMapper.selectByCouponIdAndUserId(coupon.getId(), orderVO.getUserId());
+//            userCoupon = null;
+//        }
+//    }
 }

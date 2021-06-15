@@ -18,6 +18,8 @@ public class Course {
 
     private String school;
 
+    private Integer schoolID;  //enum SCHOOL
+
     private Date createTime;
 
     private Date deleteTime;
@@ -74,6 +76,9 @@ public class Course {
     public String getSchool() {
         return school;
     }
+
+    //CouponScope中enum SCHOOL需要schoolID
+    public Integer getSchoolID(){return schoolID;}
 
     public void setSchool(String school) {
         this.school = school == null ? null : school.trim();

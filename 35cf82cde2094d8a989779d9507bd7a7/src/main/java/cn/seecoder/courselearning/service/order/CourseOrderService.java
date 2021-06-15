@@ -6,7 +6,7 @@ import cn.seecoder.courselearning.vo.ResultVO;
 import java.util.List;
 
 
-public interface CourseOrderService {
+public interface  CourseOrderService {
     // 更新订单
     ResultVO<CourseOrderVO> updateCourseOrder(Integer orderId, Integer orderStatus);
     // 根据用户id获取该用户的所有订单

@@ -17,20 +17,22 @@ public class QueryOrderServiceImpl implements QueryOrderService {
 
     @Override
     public CourseOrder queryMostRecentOrder(Integer uid, Integer courseId) {
-        List<CourseOrder> CourseOrderList = courseOrderMapper.selectByUserId(uid);
-        Date mostRecentDate = CourseOrderList.get(0).getCreateTime();
-        CourseOrder courseOrderTemp = CourseOrderList.get(0);
-        for (CourseOrder courseOrder : CourseOrderList) {
-            if ((courseOrder.getCreateTime()).compareTo(mostRecentDate) > 0) {
-                mostRecentDate = courseOrder.getCreateTime();
-                courseOrderTemp = courseOrder;
-            }
-        }
-        return courseOrderTemp;
+//        List<CourseOrder> CourseOrderList = courseOrderMapper.selectByUserId(uid);
+//        Date mostRecentDate = CourseOrderList.get(0).getCreateTime();
+//        CourseOrder courseOrderTemp = CourseOrderList.get(0);
+//        for (CourseOrder courseOrder : CourseOrderList) {
+//            if ((courseOrder.getCreateTime()).compareTo(mostRecentDate) > 0) {
+//                mostRecentDate = courseOrder.getCreateTime();
+//                courseOrderTemp = courseOrder;
+//            }
+//        }
+//        return courseOrderTemp;
+        return null;
     }
 
     @Override
     public CourseOrder getByPrimaryKey(Integer orderId) {
-        return courseOrderMapper.selectByPrimaryKey(orderId);
+        return null;
+        //return courseOrderMapper.selectByPrimaryKey(orderId);
     }
 }

@@ -98,6 +98,7 @@ public class CourseController {
     @PostMapping("/like/{courseId}")
     public ResultVO<CourseVO> setCourseLike(@RequestParam Integer uid, @PathVariable Integer courseId) {
 return courseService.setCourseLike(uid,courseId);
+
     }
 
     /**
@@ -109,4 +110,6 @@ return courseService.setCourseLike(uid,courseId);
     public ResultVO<CourseVO> cancelCourseLike(@RequestParam Integer uid, @PathVariable Integer courseId) {
         return courseService.cancelCourseLike(uid,courseId);
     }
+
+
 }

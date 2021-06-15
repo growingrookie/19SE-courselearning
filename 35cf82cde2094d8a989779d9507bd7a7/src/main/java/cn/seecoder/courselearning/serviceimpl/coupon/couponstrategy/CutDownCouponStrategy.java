@@ -32,4 +32,7 @@ public class CutDownCouponStrategy extends AbstractCouponStrategy {
             return initialCost - cutDown;
         } else return 0;
     }
+
+    @Override
+    public boolean beUsed(){return true;}
 }
